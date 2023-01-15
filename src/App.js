@@ -11,13 +11,14 @@ import {
 import "./App.css";
 import EducationSection from "./EducationSection";
 import ExperienceSection from "./ExperienceSection";
+import Footer from "./Footer";
 
 function App() {
   return (
     <Box className="App">
       <Box className="App-header" px="8rem" py="2rem">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <VStack w="100%">
+        <Flex flexDir="column" w="100%">
           <Flex alignItems={"center"} my="2rem" h="85vh" w="100%">
             <VStack w="50%" alignItems={"start"}>
               <Text pb={"0.5rem"} fontSize="30px">
@@ -64,11 +65,12 @@ function App() {
               </Box>
             </VStack>
           </Flex>
-          <VStack w="100%">
+          <Flex flexDir="column" w="100%">
             <ExperienceSection />
             <EducationSection />
-          </VStack>
-        </VStack>
+            <Footer />
+          </Flex>
+        </Flex>
       </Box>
     </Box>
   );
