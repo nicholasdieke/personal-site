@@ -1,12 +1,14 @@
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 // import "@fontsource/open-sans/300.css";
-import "@fontsource/open-sans/400.css";
+// import "@fontsource/open-sans/400.css";
 // import "@fontsource/open-sans/500.css";
-import "@fontsource/open-sans/700.css";
+// import "@fontsource/open-sans/700.css";
 // import "@fontsource/raleway/300.css";
 // import "@fontsource/raleway/400.css";
 // import "@fontsource/raleway/500.css";
-import "@fontsource/raleway/700.css";
+import "@fontsource/plus-jakarta-sans/400.css";
+import "@fontsource/plus-jakarta-sans/700.css";
+// import "@fontsource/raleway/700.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
@@ -31,8 +33,8 @@ const theme = extendTheme({
   },
 
   fonts: {
-    heading: `'Raleway', sans-serif`,
-    body: `'Open Sans', sans-serif`,
+    heading: `'Plus Jakarta Sans', sans-serif`,
+    body: `'Plus Jakarta Sans', sans-serif`,
   },
 });
 const root = ReactDOM.createRoot(document.getElementById("root"));

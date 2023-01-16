@@ -24,25 +24,32 @@ function App() {
               <Text pb={"0.5rem"} fontSize="30px">
                 Hi 👋, I'm
               </Text>
-              <Heading fontSize={"70px"} textAlign={"start"} pb={"0.5rem"}>
+              <Heading
+                fontSize={"70px"}
+                textAlign={"start"}
+                pb={"0.5rem"}
+                fontWeight="700"
+              >
                 Nicholas Dieke.
               </Heading>
               <Text color={"primary"} fontWeight="700" pb={"0.5rem"}>
                 Software Developer
               </Text>
-              <Text textAlign={"start"} fontSize={"16px"} pb={"1rem"}>
+              <Text textAlign={"start"} fontSize="16px" pb={"1rem"}>
                 Enthusiastic about technical challenges, playing a role in a
                 lively team, and creating impactful products.
               </Text>
               <Button
                 variant={"primary"}
+                fontWeight="700"
+                fontSize="14px"
                 onClick={() =>
                   (window.location =
                     "mailto:nicholasdieke@icloud.com?subject=Hello!")
                 }
                 rightIcon={<ArrowForwardIcon />}
               >
-                Contact Me
+                CONTACT ME
               </Button>
               <Text></Text>
             </VStack>

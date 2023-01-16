@@ -33,12 +33,14 @@ function InfoBox({
     >
       <VStack alignItems={"start"}>
         <Flex w="100%" justifyContent="space-between">
-          <Heading fontSize="18px">{title}</Heading>
+          <Heading fontSize="24px" fontWeight="700">
+            {title}
+          </Heading>
           <Text
             sx={{ opacity: 0.7 }}
             ml="0.5rem"
             whiteSpace="nowrap"
-            fontSize="14px"
+            fontSize="15px"
           >
             {address}
           </Text>
