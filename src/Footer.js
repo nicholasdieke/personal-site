@@ -5,8 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./App.css";
 
 function Footer() {
+  let mobile = window.innerWidth <= 425;
+  console.log(window.innerWidth);
   return (
-    <Flex mt="3rem" alignItems="flex-start">
+    <Flex mt="1rem" alignItems="flex-start">
       <a
         target="_blank"
         className="social-media-icon"
@@ -14,7 +16,8 @@ function Footer() {
         href="https://linkedin.com/in/nicholasdieke/"
         aria-label="LinkedIn"
       >
-        <FontAwesomeIcon icon={faLinkedin} />
+        {mobile && <FontAwesomeIcon icon={faLinkedin} size="2x" />}
+        {!mobile && <FontAwesomeIcon icon={faLinkedin} size="lg" />}
       </a>
       <a
         target="_blank"
@@ -23,15 +26,18 @@ function Footer() {
         href="https://github.com/nicholasdieke"
         aria-label="GitHub"
       >
-        <FontAwesomeIcon icon={faGithub} />
+        {mobile && <FontAwesomeIcon icon={faGithub} size="2x" />}
+        {!mobile && <FontAwesomeIcon icon={faGithub} size="lg" />}
       </a>
       <a
         target="_blank"
         rel="noopener"
+        className="social-media-icon"
         href="mailto:nicholasdieke@icloud.com?subject=Hello!"
         aria-label="Email"
       >
-        <FontAwesomeIcon icon={faEnvelope} />
+        {mobile && <FontAwesomeIcon icon={faEnvelope} size="2x" />}
+        {!mobile && <FontAwesomeIcon icon={faEnvelope} size="lg" />}
       </a>
     </Flex>
   );
