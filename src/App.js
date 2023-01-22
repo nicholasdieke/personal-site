@@ -40,7 +40,7 @@ function App() {
       >
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <Flex flexDir="column" w="100%">
-          <Flex justifyContent="flex-end" alignItems="center">
+          <Flex justifyContent="flex-end" w="100%" alignItems="center">
             {/* <Switch size="lg" onChange={toggleTheme} />{" "}
             <Text fontSize="14px">Dark Mode</Text> */}
             <Lottie
