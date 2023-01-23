@@ -1,9 +1,10 @@
 import { Divider, Flex, HStack, Text } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 import "./App.css";
 import InfoBox from "./InfoBox";
 
-function EducationSection(theme) {
-  window.addEventListener("scroll", reveal);
+function EducationSection() {
+  const theme = useSelector((state) => state.theme);
 
   let education = [
     {
@@ -12,7 +13,7 @@ function EducationSection(theme) {
       address: "Madrid, Spain",
       body: "I participate in datathons such as the Celonis datathon and the Google Solution Challenge. These experiences have helped my problem-solving and teamwork skills, while also providing opportunities for networking with potential employers.",
       skills: [],
-      imgSrc: "ie_" + theme.theme + ".png",
+      imgSrc: "ie_" + theme + ".png",
       dates: "2022 - 2023",
     },
     {
@@ -21,7 +22,7 @@ function EducationSection(theme) {
       address: "Bath, UK",
       body: "I graduated with a First Class Honours degree. During my university, I played on the basketball team, developing teamwork and communication skills and representing the university in competitions.",
       skills: [],
-      imgSrc: "bath_" + theme.theme + ".png",
+      imgSrc: "bath_" + theme + ".png",
       dates: "2018 - 2022",
     },
     {
@@ -30,7 +31,7 @@ function EducationSection(theme) {
       address: "Godalming, UK",
       body: "I completed the International Baccalaureate (IB) program with a focus on Mathematics, Economics and German A. During the program, I was the Captain of the basketball team, member of the 1st team Tennis, and a member of the Economics Society.",
       skills: [],
-      imgSrc: "chouse_" + theme.theme + ".png",
+      imgSrc: "chouse_" + theme + ".png",
       dates: "2015 - 2017",
     },
   ];
@@ -42,10 +43,7 @@ function EducationSection(theme) {
         <Text fontSize="14px" textTransform="uppercase">
           My Education
         </Text>
-        <Divider
-          borderColor={theme.theme === "dark" ? "white" : "black"}
-          w="10px"
-        />
+        <Divider borderColor={theme === "dark" ? "white" : "black"} w="10px" />
       </HStack>
       <Flex
         spacing="1rem"
@@ -61,25 +59,12 @@ function EducationSection(theme) {
             body={ed.body}
             skills={ed.skills}
             imgSrc={ed.imgSrc}
-            theme={theme}
             dates={ed.dates}
           />
         ))}
       </Flex>
     </Flex>
   );
-}
-
-function reveal() {
-  var reveals = document.querySelectorAll(".reveal, .fadeIn, .revealMobile");
-  for (var i = 0; i < reveals.length; i++) {
-    var windowHeight = window.innerHeight;
-    var elementTop = reveals[i].getBoundingClientRect().top;
-    var elementVisible = 150;
-    if (elementTop < windowHeight - elementVisible) {
-      reveals[i].classList.add("active");
-    }
-  }
 }
 
 export default EducationSection;

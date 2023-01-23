@@ -9,7 +9,8 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import Lottie from "lottie-react";
-import { useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import theme_animation from "./dark_mode.json";
 import EducationSection from "./EducationSection";
@@ -17,17 +18,28 @@ import ExperienceSection from "./ExperienceSection";
 import Footer from "./Footer";
 
 function App() {
-  window.addEventListener("scroll", reveal);
+  useEffect(() => {
+    // Add an event listener to listen to scroll events
+    window.addEventListener("scroll", reveal);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", reveal);
+    };
+  }, []);
+
   let mobile = window.innerWidth <= 425;
-  const [theme, setTheme] = useState("dark");
   const lottieRef = useRef();
+  const theme = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
+
   const toggleTheme = () => {
     if (theme === "light") {
       lottieRef.current.playSegments([110, 60], true);
-      setTheme("dark");
+      dispatch({ type: "TOGGLE_THEME" });
     } else {
       lottieRef.current.playSegments([60, 110], true);
-      setTheme("light");
+      dispatch({ type: "TOGGLE_THEME" });
     }
   };
 
@@ -35,14 +47,12 @@ function App() {
     <Box className="App">
       <Box
         className={theme}
-        px={{ base: "2rem", lg: "8rem" }}
+        px={{ base: "2rem", lg: "7.5rem" }}
         py={{ base: "1rem", lg: "2rem" }}
       >
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <Flex flexDir="column" w="100%">
           <Flex justifyContent="flex-end" w="100%" alignItems="center">
-            {/* <Switch size="lg" onChange={toggleTheme} />{" "}
-            <Text fontSize="14px">Dark Mode</Text> */}
             <Lottie
               animationData={theme_animation}
               style={{
@@ -79,10 +89,10 @@ function App() {
                 fontWeight="700"
                 className="moveright2"
               >
-                Nicholas Dieke.
+                Nicholas Dieke
               </Heading>
               <Text
-                color={"primary"}
+                color={theme === "dark" ? "primary" : "secondary"}
                 fontWeight="700"
                 pb={"0.5rem"}
                 fontSize={{ base: "18px", lg: "22px" }}
@@ -98,7 +108,7 @@ function App() {
                 lively team, and creating impactful products.
               </Text>
               <Button
-                variant={"primary"}
+                variant={theme === "dark" ? "primary" : "secondary"}
                 fontWeight="700"
                 fontSize={{ base: "12px", lg: "14px" }}
                 onClick={() =>
@@ -106,7 +116,7 @@ function App() {
                     "mailto:nicholasdieke@icloud.com?subject=Hello!")
                 }
                 rightIcon={<ArrowForwardIcon />}
-                className="fadeInDirect"
+                className={"fadeInDirect" + theme}
                 textTransform="uppercase"
               >
                 Contact Me
@@ -118,11 +128,11 @@ function App() {
                 borderRadius={{ base: "3rem", lg: "5rem" }}
                 borderBottomWidth={{ base: "7px", lg: "15px" }}
                 borderLeftWidth={{ base: "7px", lg: "15px" }}
-                borderColor="secondary"
+                borderColor="primary"
                 overflow={"hidden"}
               >
                 <Image
-                  bg={"primary"}
+                  bg={"secondary"}
                   height={{ base: "200px", lg: "400px" }}
                   src="/nick_transparent.png"
                   alt="Nicholas Dieke"
@@ -131,8 +141,8 @@ function App() {
             </VStack>
           </Flex>
           <Flex flexDir="column" w="100%">
-            <ExperienceSection theme={theme} />
-            <EducationSection theme={theme} />
+            <ExperienceSection />
+            <EducationSection />
             <Footer />
           </Flex>
         </Flex>
@@ -142,7 +152,7 @@ function App() {
 }
 
 function reveal() {
-  var reveals = document.querySelectorAll(".reveal, .revealMobile");
+  var reveals = document.querySelectorAll(".reveal, .revealMobile, .fadeIn");
   for (var i = 0; i < reveals.length; i++) {
     var windowHeight = window.innerHeight;
     var elementTop = reveals[i].getBoundingClientRect().top;

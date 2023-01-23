@@ -6,7 +6,6 @@ import "./App.css";
 
 function Footer() {
   let mobile = window.innerWidth <= 425;
-  console.log(window.innerWidth);
   return (
     <Flex mt="1rem" alignItems="flex-start">
       <a

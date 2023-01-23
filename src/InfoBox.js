@@ -11,30 +11,19 @@ import {
 } from "@chakra-ui/react";
 import { faCalendar, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSelector } from "react-redux";
 import "./App.css";
 
-function InfoBox({
-  title,
-  insitution,
-  address,
-  body,
-  skills,
-  imgSrc,
-  theme,
-  dates,
-}) {
-  let mobile = window.innerWidth < 992;
-  console.log(theme.theme);
+function InfoBox({ title, insitution, address, body, skills, imgSrc, dates }) {
+  const theme = useSelector((state) => state.theme);
+
   return (
     <Box
-      // className={mobile ? "revealMobile" : "reveal"}
       className="reveal"
-      minH="300px"
+      // minH="300px"
       minW={{ base: "220px", lg: "450px" }}
       bg={
-        theme.theme === "dark"
-          ? "rgba(255, 255, 255, 0.15)"
-          : "rgba(0, 0, 0, 0.05)"
+        theme === "dark" ? "rgba(255, 255, 255, 0.15)" : "rgba(0, 0, 0, 0.05)"
       }
       p="1.2rem"
       mr={{ base: "0rem", lg: "1rem" }}
@@ -58,7 +47,7 @@ function InfoBox({
             size="2xs"
           />
           <Text
-            color="secondary"
+            color={theme === "dark" ? "primary" : "secondary"}
             ml="0.5rem"
             fontSize={{ base: "14px", lg: "16px" }}
           >
@@ -90,19 +79,25 @@ function InfoBox({
         <Divider w="30px" style={{ opacity: "0.5" }} mt="0.5rem" />
         <Text fontSize={{ base: "13px", lg: "14px" }}>{body}</Text>
       </VStack>
-      <Flex mt="0.5rem" justifyContent="space-between">
+      <Flex mt="0.5rem" justifyContent="space-between" alignItems="center">
         <HStack>
           {skills.map((s) => (
-            <Tag size={{ base: "sm", lg: "md" }} bg="secondary">
+            <Tag
+              size={{ base: "sm", lg: "md" }}
+              variant="outline"
+              style={{
+                "--badge-color": theme === "dark" ? "#EEA38B" : "#4BA2D3",
+              }}
+            >
               {s}
             </Tag>
           ))}
         </HStack>
         <Box>
           <Image
-            opacity={theme.theme === "dark" ? "0.5" : "0.3"}
+            opacity={theme === "dark" ? "0.5" : "0.3"}
             maxH="40px"
-            maxW="100px"
+            maxW={{ base: "70px", md: "100px" }}
             src={"./" + imgSrc}
           />
         </Box>

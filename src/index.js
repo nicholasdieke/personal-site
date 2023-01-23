@@ -11,22 +11,29 @@ import "@fontsource/plus-jakarta-sans/700.css";
 // import "@fontsource/raleway/700.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 import App from "./App";
 import "./index.css";
+import store from "./redux/store";
 import reportWebVitals from "./reportWebVitals";
 
 // Calling `extendTheme` and passing custom values
 const theme = extendTheme({
   colors: {
-    primary: "#4BA2D3",
-    secondary: "#EEA38B",
+    primary: "#EEA38B",
+    secondary: "#4BA2D3",
   },
 
   components: {
     Button: {
       variants: {
         primary: {
+          bg: "#EEA38B",
+          color: "black",
+        },
+        secondary: {
           bg: "#4BA2D3",
+          color: "white",
         },
       },
     },
@@ -40,11 +47,13 @@ const theme = extendTheme({
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <ChakraProvider theme={theme}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </ChakraProvider>
+  <Provider store={store}>
+    <ChakraProvider theme={theme}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </ChakraProvider>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
