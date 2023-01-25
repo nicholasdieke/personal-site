@@ -11,3 +11,4 @@ Technologies Used:
 - HTML
 - Git
 - Redux
+- Vercel
