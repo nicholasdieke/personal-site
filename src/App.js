@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import Lottie from "lottie-react";
 import { useEffect, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import theme_animation from "./dark_mode.json";
@@ -20,7 +21,6 @@ import Footer from "./Footer";
 function App() {
   useEffect(() => {
     // Add an event listener to listen to scroll events
-    document.title = "Nicholas Dieke";
     window.addEventListener("scroll", reveal);
 
     // Clean up the event listener when the component unmounts
@@ -46,6 +46,14 @@ function App() {
 
   return (
     <Box className="App">
+      <Helmet>
+        <title>Nicholas Dieke</title>
+        <meta
+          name="description"
+          content="Hi, I'm Nicholas Dieke. Software Developer enthusiastic about technical challenges, playing a role in a lively team, and creating impactful products."
+        />
+        ;
+      </Helmet>
       <Box
         className={theme}
         px={{ base: "2rem", lg: "7.5rem" }}

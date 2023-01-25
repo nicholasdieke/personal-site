@@ -11,6 +11,7 @@ import "@fontsource/plus-jakarta-sans/700.css";
 // import "@fontsource/raleway/700.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { HelmetProvider } from "react-helmet-async";
 import { Provider } from "react-redux";
 import App from "./App";
 import "./index.css";
@@ -48,11 +49,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <Provider store={store}>
-    <ChakraProvider theme={theme}>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </ChakraProvider>
+    <HelmetProvider>
+      <ChakraProvider theme={theme}>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </ChakraProvider>
+    </HelmetProvider>
   </Provider>
 );
 
