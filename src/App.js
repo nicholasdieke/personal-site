@@ -20,6 +20,7 @@ import Footer from "./Footer";
 function App() {
   useEffect(() => {
     // Add an event listener to listen to scroll events
+    document.title = "Nicholas Dieke";
     window.addEventListener("scroll", reveal);
 
     // Clean up the event listener when the component unmounts
@@ -28,7 +29,7 @@ function App() {
     };
   }, []);
 
-  let mobile = window.innerWidth <= 425;
+  let mobile = window.innerWidth <= 420;
   const lottieRef = useRef();
   const theme = useSelector((state) => state.theme);
   const dispatch = useDispatch();
@@ -50,15 +51,17 @@ function App() {
         px={{ base: "2rem", lg: "7.5rem" }}
         py={{ base: "1rem", lg: "2rem" }}
       >
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <Flex flexDir="column" w="100%">
-          <Flex justifyContent="flex-end" w="100%" alignItems="center">
+          <Flex w="100%" justifyContent="flex-end">
             <Lottie
               animationData={theme_animation}
               style={{
                 height: mobile ? "70px" : "90px",
+                width: mobile ? "70px" : "90px",
                 cursor: "pointer",
                 marginBottom: mobile ? "-70px" : "-90px",
+                position: "relative",
+                right: "0px",
                 marginRight: "-20px",
               }}
               onClick={toggleTheme}

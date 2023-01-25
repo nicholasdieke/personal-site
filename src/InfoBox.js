@@ -9,13 +9,30 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { faCalendar, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBuilding,
+  faCalendar,
+  faLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./App.css";
 
 function InfoBox({ title, insitution, address, body, skills, imgSrc, dates }) {
   const theme = useSelector((state) => state.theme);
+  // let mobile = window.innerWidth <= 400;
+
+  const [mobile, setMobile] = useState(window.innerWidth <= 420);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      setMobile(window.innerWidth <= 420);
+      console.log("UPDATED MOBILE");
+    };
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
 
   return (
     <Box
@@ -37,45 +54,59 @@ function InfoBox({ title, insitution, address, body, skills, imgSrc, dates }) {
       overflow="hidden"
     >
       <VStack alignItems={"start"}>
-        <Heading fontSize={{ base: "18px", lg: "20px" }} fontWeight="700">
+        <Heading fontSize={{ base: "18px", md: "20px" }} fontWeight="700">
           {title}
         </Heading>
-        <Flex w="100%" alignItems="center">
-          <FontAwesomeIcon
-            icon={faLocationDot}
-            style={{ opacity: 0.5, borderColor: "#4ba2d3" }}
-            size="2xs"
-          />
-          <Text
-            color={theme === "dark" ? "primary" : "secondary"}
-            ml="0.5rem"
-            fontSize={{ base: "14px", lg: "16px" }}
-          >
-            {insitution}
-          </Text>
-          <Text
-            sx={{ opacity: 0.5 }}
-            fontSize={{ base: "14px", lg: "16px" }}
-            ml="7px"
-            whiteSpace="nowrap"
-          >
-            {address}
-          </Text>
-        </Flex>
-        <Flex alignItems="center">
-          <FontAwesomeIcon
-            style={{ opacity: 0.5 }}
-            icon={faCalendar}
-            size="2xs"
-          />
-          <Text
-            fontSize={{ base: "13px", lg: "14px" }}
-            ml="0.5rem"
-            sx={{ opacity: 0.5 }}
-          >
-            {dates}
-          </Text>
-        </Flex>
+        <VStack alignItems="start" w="100%">
+          <Flex w="100%" flexDir={{ base: "column", sm: "row" }}>
+            <Flex alignItems="center">
+              <FontAwesomeIcon
+                icon={faBuilding}
+                style={{ opacity: 0.5, borderColor: "#4ba2d3" }}
+                size={mobile ? "1xs" : "2xs"}
+              />
+              <Text
+                color={theme === "dark" ? "primary" : "secondary"}
+                ml="0.5rem"
+                fontSize={{ base: "14px", sm: "16px" }}
+                whiteSpace="nowrap"
+              >
+                {insitution}
+              </Text>
+            </Flex>
+            <Flex alignItems="center" mt={mobile ? "0.5rem" : "0px"}>
+              {mobile && (
+                <FontAwesomeIcon
+                  icon={faLocationDot}
+                  style={{ opacity: 0.5, borderColor: "#4ba2d3" }}
+                  size={mobile ? "1xs" : "2xs"}
+                />
+              )}
+              <Text
+                sx={{ opacity: 0.5 }}
+                fontSize={{ base: "14px", sm: "16px" }}
+                ml="7px"
+                whiteSpace="nowrap"
+              >
+                {address}
+              </Text>
+            </Flex>
+          </Flex>
+          <Flex alignItems="center" w="100%">
+            <FontAwesomeIcon
+              style={{ opacity: 0.5 }}
+              icon={faCalendar}
+              size={mobile ? "1xs" : "2xs"}
+            />
+            <Text
+              fontSize={{ base: "14px", sm: "15px" }}
+              ml="0.5rem"
+              sx={{ opacity: 0.5 }}
+            >
+              {dates}
+            </Text>
+          </Flex>
+        </VStack>
         <Divider w="30px" style={{ opacity: "0.5" }} mt="0.5rem" />
         <Text fontSize={{ base: "13px", lg: "14px" }}>{body}</Text>
       </VStack>

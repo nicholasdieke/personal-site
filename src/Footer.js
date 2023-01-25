@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./App.css";
 
 function Footer() {
-  let mobile = window.innerWidth <= 425;
+  let mobile = window.innerWidth <= 420;
   return (
     <Flex mt="1rem" alignItems="flex-start">
       <a
