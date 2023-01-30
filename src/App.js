@@ -12,6 +12,7 @@ import Lottie from "lottie-react";
 import { useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import { useDispatch, useSelector } from "react-redux";
+import AboutMeSection from "./AboutMeSection";
 import "./App.css";
 import theme_animation from "./dark_mode.json";
 import EducationSection from "./EducationSection";
@@ -81,7 +82,7 @@ function App() {
           <Flex
             alignItems={"center"}
             my="3rem"
-            h={{ base: "100%", lg: "80vh" }}
+            h={{ base: "100%", lg: "70vh" }}
             w="100%"
             flexDir={{ base: "column", md: "row" }}
           >
@@ -152,6 +153,7 @@ function App() {
             </VStack>
           </Flex>
           <Flex flexDir="column" w="100%">
+            <AboutMeSection />
             <ExperienceSection />
             <EducationSection />
             <Footer />
