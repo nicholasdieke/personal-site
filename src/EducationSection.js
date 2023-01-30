@@ -1,4 +1,5 @@
 import { Divider, Flex, HStack, Text } from "@chakra-ui/react";
+import { useStoryblok } from "@storyblok/react";
 import { useSelector } from "react-redux";
 import "./App.css";
 import InfoBox from "./InfoBox";
@@ -6,33 +7,37 @@ import InfoBox from "./InfoBox";
 function EducationSection() {
   const theme = useSelector((state) => state.theme);
 
+  const ie = useStoryblok("education/ie");
+  const bath = useStoryblok("education/bath");
+  const chouse = useStoryblok("education/chouse");
+
   let education = [
     {
-      title: "Master in Computer Science and Business Technology",
-      insitution: "IE University",
-      address: "Madrid, Spain",
-      body: "I participate in datathons such as the Celonis datathon and the Google Solution Challenge. These experiences have helped my problem-solving and teamwork skills, while also providing opportunities for networking with potential employers.",
+      title: ie.content ? ie.content.title : "",
+      institution: ie.content ? ie.content.institution : "",
+      address: ie.content ? ie.content.address : "",
+      body: ie.content ? ie.content.body : "",
       skills: [],
       imgSrc: "ie_" + theme + ".png",
-      dates: "2022 - 2023",
+      dates: ie.content ? ie.content.dates : "",
     },
     {
-      title: "BSc Computer Science with Business",
-      insitution: "University of Bath",
-      address: "Bath, UK",
-      body: "I graduated with a First Class Honours degree. During my university, I played on the basketball team, developing teamwork and communication skills and representing the university in competitions.",
+      title: bath.content ? bath.content.title : "",
+      institution: bath.content ? bath.content.institution : "",
+      address: bath.content ? bath.content.address : "",
+      body: bath.content ? bath.content.body : "",
       skills: [],
       imgSrc: "bath_" + theme + ".png",
-      dates: "2018 - 2022",
+      dates: bath.content ? bath.content.dates : "",
     },
     {
-      title: "International Baccaleureate",
-      insitution: "Charterhouse School",
-      address: "Godalming, UK",
-      body: "I completed the International Baccalaureate (IB) program with a focus on Mathematics, Economics and German A. During the program, I was the Captain of the basketball team, member of the 1st team Tennis, and a member of the Economics Society.",
+      title: chouse.content ? chouse.content.title : "",
+      institution: chouse.content ? chouse.content.institution : "",
+      address: chouse.content ? chouse.content.address : "",
+      body: chouse.content ? chouse.content.body : "",
       skills: [],
       imgSrc: "chouse_" + theme + ".png",
-      dates: "2015 - 2017",
+      dates: chouse.content ? chouse.content.dates : "",
     },
   ];
 
@@ -54,7 +59,7 @@ function EducationSection() {
         {education.map((ed) => (
           <InfoBox
             title={ed.title}
-            insitution={ed.insitution}
+            institution={ed.institution}
             address={ed.address}
             body={ed.body}
             skills={ed.skills}

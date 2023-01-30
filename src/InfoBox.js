@@ -19,7 +19,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./App.css";
 
-function InfoBox({ title, insitution, address, body, skills, imgSrc, dates }) {
+function InfoBox({ title, institution, address, body, skills, imgSrc, dates }) {
   const theme = useSelector((state) => state.theme);
   // let mobile = window.innerWidth <= 400;
 
@@ -63,7 +63,7 @@ function InfoBox({ title, insitution, address, body, skills, imgSrc, dates }) {
               <FontAwesomeIcon
                 icon={faBuilding}
                 style={{ opacity: 0.5, borderColor: "#4ba2d3" }}
-                size={mobile ? "1xs" : "2xs"}
+                size={mobile ? "xs" : "2xs"}
               />
               <Text
                 color={theme === "dark" ? "primary" : "secondary"}
@@ -71,7 +71,7 @@ function InfoBox({ title, insitution, address, body, skills, imgSrc, dates }) {
                 fontSize={{ base: "14px", sm: "16px" }}
                 whiteSpace="nowrap"
               >
-                {insitution}
+                {institution}
               </Text>
             </Flex>
             <Flex alignItems="center" mt={mobile ? "0.5rem" : "0px"}>
@@ -79,7 +79,7 @@ function InfoBox({ title, insitution, address, body, skills, imgSrc, dates }) {
                 <FontAwesomeIcon
                   icon={faLocationDot}
                   style={{ opacity: 0.5, borderColor: "#4ba2d3" }}
-                  size={mobile ? "1xs" : "2xs"}
+                  size={mobile ? "xs" : "2xs"}
                 />
               )}
               <Text
@@ -96,7 +96,7 @@ function InfoBox({ title, insitution, address, body, skills, imgSrc, dates }) {
             <FontAwesomeIcon
               style={{ opacity: 0.5 }}
               icon={faCalendar}
-              size={mobile ? "1xs" : "2xs"}
+              size={mobile ? "xs" : "2xs"}
             />
             <Text
               fontSize={{ base: "14px", sm: "15px" }}

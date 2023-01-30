@@ -1,4 +1,5 @@
 import { Divider, Flex, HStack, Text } from "@chakra-ui/react";
+import { useStoryblok } from "@storyblok/react";
 import { useSelector } from "react-redux";
 import "./App.css";
 import InfoBox from "./InfoBox";
@@ -6,51 +7,57 @@ import InfoBox from "./InfoBox";
 function ExperienceSection() {
   const theme = useSelector((state) => state.theme);
 
+  const google = useStoryblok("experiences/google-dsc");
+  const bertrandt = useStoryblok("experiences/bertrandt");
+  const degrees = useStoryblok("experiences/180-degrees");
+  const educai = useStoryblok("experiences/educai");
+  const tracetronic = useStoryblok("experiences/tracetronic");
+
   let experiences = [
     {
-      title: "Tech Lead",
-      insitution: "Google Developer Students Club IE",
-      address: "Madrid, Spain",
-      body: "As a member of the Google DSC at IE, I have organised events to equip students with technical skills, such as an interview prep event and a web developement intro event.",
+      title: google.content ? google.content.title : "",
+      institution: google.content ? google.content.institution : "",
+      address: google.content ? google.content.address : "",
+      body: google.content ? google.content.body : "",
       skills: [],
       imgSrc: "gdsc_" + theme + ".png",
-      dates: "Oct 2022 - Present",
+      dates: google.content ? google.content.dates : "",
     },
     {
-      title: "Sofware Engineer Intern",
-      insitution: "Bertrandt Group",
-      address: "Munich, Germany",
-      body: "I co-created the company's internal machine maintenance tool and collaborated with the manager of the company's largest site using TypeScript, Angular, and C#. Additionally, I redesigned and optimised a core component of the internal scheduling tool. This led to a 60% reduction in load times and a more intuitive user experience.",
-      skills: ["C#", "Angular", "Azure"],
+      title: bertrandt.content ? bertrandt.content.title : "",
+      institution: bertrandt.content ? bertrandt.content.institution : "",
+      address: bertrandt.content ? bertrandt.content.address : "",
+      body: bertrandt.content ? bertrandt.content.body : "",
+      skills: bertrandt.content ? bertrandt.content.skills.split(",") : [],
       imgSrc: "bertrandt_" + theme + ".png",
-      dates: "Jun 2022 - Sep 2022",
+      dates: bertrandt.content ? bertrandt.content.dates : "",
     },
     {
-      title: "Consultant",
-      insitution: "180 Degrees Consulting Bath",
-      address: "Bath, UK",
-      body: "Market entry recommendations for a Swedish MedTech start-up were produced by conducting in-depth market analysis. I also took the responsibility of running weekly discussions with the CEO to report on progress.",
+      title: degrees.content ? degrees.content.title : "",
+      institution: degrees.content ? degrees.content.institution : "",
+      address: degrees.content ? degrees.content.address : "",
+      body: degrees.content ? degrees.content.body : "",
       skills: [],
       imgSrc: "180_" + theme + ".png",
-      dates: "Oct 2021 - Dec 2021",
+      dates: degrees.content ? degrees.content.dates : "",
     },
     {
-      title: "Software Developer Intern",
-      insitution: "Educai",
-      address: "London, UK",
-      body: "I designed and developed core parts of an education platform using React and TypeScript, which was widely used by tutors across the UK. Working closely with the sales and marketing teams, the platform was successfully launched and a web application was created to assess learning approaches. I also led meetings with clients and investors, and trained two new developers to continue building and improving the platform.",
-      skills: ["React", "TypeScript", "Python"],
+      title: educai.content ? educai.content.title : "",
+      institution: educai.content ? educai.content.institution : "",
+      address: educai.content ? educai.content.address : "",
+      body: educai.content ? educai.content.body : "",
+      skills: educai.content ? educai.content.skills.split(",") : [],
       imgSrc: "educai_" + theme + ".png",
-      dates: "Sep 2020 - Jul 2021",
+      dates: educai.content ? educai.content.dates : "",
     },
     {
-      title: "Software Developer Intern",
-      insitution: "TraceTronic GmbH",
-      address: "Munich, Germany",
-      body: "During my 3-month internship in the automotive industry, I worked on the start-stop system team developing a data management software. My responsibilities included analysing bugs, developing unit tests, and working in a Scrum process. I also presented new changes to the team and clients and worked independently on the software, gaining valuable experience in perseverance.",
-      skills: ["Java", "SQL"],
+      title: tracetronic.content ? tracetronic.content.title : "",
+      institution: tracetronic.content ? tracetronic.content.institution : "",
+      address: tracetronic.content ? tracetronic.content.address : "",
+      body: tracetronic.content ? tracetronic.content.body : "",
+      skills: tracetronic.content ? tracetronic.content.skills.split(",") : [],
       imgSrc: "tracetronic_" + theme + ".png",
-      dates: "Jun 2019 - Aug 2019",
+      dates: tracetronic.content ? tracetronic.content.dates : "",
     },
   ];
 
@@ -75,7 +82,7 @@ function ExperienceSection() {
         {experiences.map((ex) => (
           <InfoBox
             title={ex.title}
-            insitution={ex.insitution}
+            institution={ex.institution}
             address={ex.address}
             body={ex.body}
             skills={ex.skills}

@@ -9,6 +9,7 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import "@fontsource/plus-jakarta-sans/400.css";
 import "@fontsource/plus-jakarta-sans/700.css";
 // import "@fontsource/raleway/700.css";
+import { apiPlugin, storyblokInit } from "@storyblok/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
@@ -46,6 +47,13 @@ const theme = extendTheme({
   },
 });
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+storyblokInit({
+  accessToken: "rQUSUHRgbQWy6Derw0F8Hwtt",
+  use: [apiPlugin],
+  components: {},
+  apiOptions: { region: "us" },
+});
 
 root.render(
   <Provider store={store}>
