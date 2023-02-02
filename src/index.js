@@ -12,7 +12,6 @@ import "@fontsource/plus-jakarta-sans/700.css";
 import { apiPlugin, storyblokInit } from "@storyblok/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { HelmetProvider } from "react-helmet-async";
 import { Provider } from "react-redux";
 import App from "./App";
 import "./index.css";
@@ -57,13 +56,11 @@ storyblokInit({
 
 root.render(
   <Provider store={store}>
-    <HelmetProvider>
-      <ChakraProvider theme={theme}>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      </ChakraProvider>
-    </HelmetProvider>
+    <ChakraProvider theme={theme}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </ChakraProvider>
   </Provider>
 );
 

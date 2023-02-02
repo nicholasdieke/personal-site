@@ -10,7 +10,6 @@ import {
 } from "@chakra-ui/react";
 import Lottie from "lottie-react";
 import { useEffect, useRef } from "react";
-import { Helmet } from "react-helmet-async";
 import { useDispatch, useSelector } from "react-redux";
 import AboutMeSection from "./AboutMeSection";
 import "./App.css";
@@ -48,14 +47,10 @@ function App() {
 
   return (
     <Box className="App">
-      <Helmet>
+      {/* <Helmet>
         <title>Nicholas Dieke</title>
-        <meta
-          name="description"
-          content="Hi, I'm Nicholas Dieke. Software Developer enthusiastic about technical challenges, playing a role in a lively team, and creating impactful products."
-        />
-        ;
-      </Helmet>
+        <meta name="og:description" content="Personal Website" />;
+      </Helmet> */}
       <Box
         className={theme}
         px={{ base: "2rem", lg: "7.5rem" }}
