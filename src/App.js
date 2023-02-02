@@ -18,6 +18,7 @@ import theme_animation from "./dark_mode.json";
 import EducationSection from "./EducationSection";
 import ExperienceSection from "./ExperienceSection";
 import Footer from "./Footer";
+import SkillsSection from "./SkillsSection";
 
 function App() {
   useEffect(() => {
@@ -154,6 +155,7 @@ function App() {
           </Flex>
           <Flex flexDir="column" w="100%">
             <AboutMeSection />
+            <SkillsSection />
             <ExperienceSection />
             <EducationSection />
             <Footer />

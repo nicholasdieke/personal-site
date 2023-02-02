@@ -28,7 +28,6 @@ function InfoBox({ title, institution, address, body, skills, imgSrc, dates }) {
   useEffect(() => {
     const updateWidth = () => {
       setMobile(window.innerWidth <= 420);
-      console.log("UPDATED MOBILE");
     };
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
