@@ -47,10 +47,6 @@ function App() {
 
   return (
     <Box className="App">
-      {/* <Helmet>
-        <title>Nicholas Dieke</title>
-        <meta name="og:description" content="Personal Website" />;
-      </Helmet> */}
       <Box
         className={theme}
         px={{ base: "2rem", lg: "7.5rem" }}
@@ -105,7 +101,7 @@ function App() {
                 pb={"0.5rem"}
                 fontSize={{ base: "18px", lg: "22px" }}
               >
-                Software Developer
+                Software Engineer
               </Text>
               <Text
                 textAlign={"start"}
