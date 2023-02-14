@@ -6,7 +6,7 @@ import SkillBox from "./SkillBox";
 const skills = [
   { title: "Python", img: "skills_logos/python_logo.png" },
   { title: "JavaScript", img: "skills_logos/JavaScript-logo.png" },
-  { title: "TypeScript", img: "skills_logos/TypeScript_logo.svg" },
+  { title: "TypeScript", img: "skills_logos/Typescript_logo.svg" },
   { title: "C#", img: "skills_logos/Csharp_Logo.png" },
   { title: "React", img: "skills_logos/React-icon.svg" },
   { title: "Angular", img: "skills_logos/Angular_logo.svg" },
