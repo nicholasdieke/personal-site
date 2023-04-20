@@ -125,7 +125,7 @@ function InfoBox({ title, institution, address, body, skills, imgSrc, dates }) {
         </HStack>
         <Box>
           <Image
-            opacity={theme === "dark" ? "0.5" : "0.3"}
+            opacity={theme === "dark" ? "0.8" : "0.3"}
             maxH="40px"
             maxW={{ base: "70px", md: "100px" }}
             src={"./" + imgSrc}

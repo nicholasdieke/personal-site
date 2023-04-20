@@ -13,11 +13,12 @@ import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AboutMeSection from "./AboutMeSection";
 import "./App.css";
-import theme_animation from "./dark_mode.json";
 import EducationSection from "./EducationSection";
 import ExperienceSection from "./ExperienceSection";
 import Footer from "./Footer";
+import ProjectsSection from "./ProjectsSection";
 import SkillsSection from "./SkillsSection";
+import theme_animation from "./dark_mode.json";
 
 function App() {
   useEffect(() => {
@@ -149,6 +150,7 @@ function App() {
             <SkillsSection />
             <ExperienceSection />
             <EducationSection />
+            <ProjectsSection />
             <Footer />
           </Flex>
         </Flex>

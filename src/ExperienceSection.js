@@ -62,7 +62,7 @@ function ExperienceSection() {
   ];
 
   return (
-    <Flex alignContent={"flex-start"} flexDir="column" w="100%" my="2rem">
+    <Flex alignContent={"flex-start"} flexDir="column" w="100%" my="1.5rem">
       <HStack mb="1rem" className="fadeIn">
         {/* <FontAwesomeIcon
           icon={faBriefcase}
